@@ -1,3 +1,4 @@
 const handleBantu = require("./bantu");
+const handleUtilitas = require("./utilitas");
 
-module.exports = { handleBantu };
+module.exports = { handleBantu, handleUtilitas };
