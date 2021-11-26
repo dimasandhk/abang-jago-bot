@@ -1,0 +1,19 @@
+{
+	"name": "abang-jago-bot",
+	"version": "1.0.0",
+	"description": "Bot Abang Jago, apa aja bisa prefixnya \"bg\"",
+	"main": "index.js",
+	"scripts": {
+		"start": "nodemon src/main"
+	},
+	"author": "Dimas Andhika Diputra",
+	"license": "MIT",
+	"dependencies": {
+		"axios": "^0.24.0",
+		"discord.js": "^12.5.3",
+		"dotenv": "^10.0.0"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.15"
+	}
+}
