@@ -4,6 +4,7 @@ require("dotenv").config();
 
 // Command Handler
 const _ = require("../handler/main");
+const avComm = require("../data/data.json");
 
 client.on("ready", () => {
 	console.log(`Logged in as ${client.user.tag}`);
@@ -18,6 +19,11 @@ client.on("message", (msg) => {
 		const comm = mainMsg[1]; // Command bg ...
 		const params = msg.content.split(`bg ${comm}`)[1].trim(); // Params bg kbbi ....
 
+		// If command is async add 'loading' info
+		if (avComm.find((name) => name == comm)) {
+			msg.channel.send("sabar");
+		}
+
 		switch (comm) {
 			case "bantu":
 				_.handleBantu(msg);
@@ -27,6 +33,7 @@ client.on("message", (msg) => {
 				_.handleUtilitas.kbbi(params, msg);
 				break;
 			case "covidworld":
+				_.handleUtilitas.covidworld(msg);
 				break;
 		}
 	}
