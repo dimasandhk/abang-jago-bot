@@ -38,7 +38,16 @@ client.on("message", (msg) => {
 			case "pantun":
 				_.handleEnter.pantun(msg);
 				break;
+			case "faktaunik":
+				_.handleEnter.faktaunik(msg);
+				break;
+			case "meme":
+				_.handleEnter.meme(msg);
+				break;
 		}
+	}
+	if (!msg.author.bot) {
+		console.log(msg.author.id);
 	}
 });
 
