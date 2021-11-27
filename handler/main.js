@@ -1,5 +1,5 @@
 const handleBantu = require("./bantu");
 const handleUtilitas = require("./utilitas");
-const handleEnter = require("./entertainment");
+const handleEntert = require("./entertainment");
 
-module.exports = { handleBantu, handleUtilitas, handleEnter };
+module.exports = { handleBantu, handleUtilitas, handleEntert };

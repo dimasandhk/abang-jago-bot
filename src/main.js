@@ -36,13 +36,13 @@ client.on("message", (msg) => {
 				_.handleUtilitas.covidworld(msg);
 				break;
 			case "pantun":
-				_.handleEnter.pantun(msg);
+				_.handleEntert.pantun(msg);
 				break;
 			case "faktaunik":
-				_.handleEnter.faktaunik(msg);
+				_.handleEntert.faktaunik(msg);
 				break;
 			case "meme":
-				_.handleEnter.meme(msg);
+				_.handleEntert.meme(msg);
 				break;
 		}
 	}

@@ -7,31 +7,31 @@ const embed = new MessageEmbed({
 	color: "#23e2cf"
 });
 
-class handleEnter {
-	static async pantun(msg) {
-		const res = await axios.get(url("pantun", false));
-		const data = await res.data.result;
+const handleBasicEntert = async (type, qConfig, msg) => {
+	const res = await axios.get(url(type, qConfig.bool, qConfig.query));
+	const data = await res.data.result;
 
-		msg.channel.bulkDelete(1);
-		msg.channel.send(embed.setDescription(data));
+	msg.channel.bulkDelete(1);
+	msg.channel.send(embed.setDescription(data));
+};
+
+class handleEntert {
+	static async pantun(msg) {
+		handleBasicEntert("pantun", { bool: false }, msg);
 	}
 	static async faktaunik(msg) {
-		const res = await axios.get(url("faktaunik", false));
-		const data = await res.data.result;
-
-		msg.channel.bulkDelete(1);
-		msg.channel.send(embed.setDescription(data));
+		handleBasicEntert("faktaunik", { bool: false }, msg);
 	}
 	static async meme(msg) {
-		const canvas = Canvas.createCanvas(700, 700);
+		const canvas = Canvas.createCanvas(850, 800);
 		const context = canvas.getContext("2d");
 
 		const background = await Canvas.loadImage(url("random/memeindo", false));
 
-		// This uses the canvas dimensions to stretch the image onto the entire canvas
+		// Masukkin gambar ke canvas
 		context.drawImage(background, 0, 0, canvas.width, canvas.height);
 
-		// Use the helpful Attachment class structure to process the file for you
+		// Buffer to png
 		const attachment = new MessageAttachment(canvas.toBuffer(), "meme.png");
 
 		msg.channel.bulkDelete(1);
@@ -39,4 +39,4 @@ class handleEnter {
 	}
 }
 
-module.exports = handleEnter;
+module.exports = handleEntert;
