@@ -35,6 +35,9 @@ client.on("message", (msg) => {
 			case "covidworld":
 				_.handleUtilitas.covidworld(msg);
 				break;
+			case "pantun":
+				_.handleEnter.pantun(msg);
+				break;
 		}
 	}
 });

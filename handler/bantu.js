@@ -6,6 +6,10 @@ const listBantu = [
 		list: ["tebakgambar", "asahotak", "siapaku", "susunkata", "tekateki"]
 	},
 	{
+		name: "Entertainment",
+		list: ["meme", "faktaunik", "cerpen", "pantun"]
+	},
+	{
 		name: "Utilitas",
 		list: ["kbbi", "wikipedia", "translate", "covidworld"]
 	}
