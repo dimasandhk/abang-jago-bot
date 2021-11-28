@@ -31,8 +31,12 @@ class handleUtilitas {
 		const data = await getData("wikipedia", true, query);
 		const embed = makeEmbed(data.judul);
 
-		embed.setDescription(data.isi);
 		msg.channel.bulkDelete(1);
+		if (data.message) {
+			return msg.reply(`**${query}** tidak ditemukan di wiki`);
+		}
+
+		embed.setDescription(data.isi);
 		msg.channel.send(embed);
 	}
 	static async infocovid(msg) {

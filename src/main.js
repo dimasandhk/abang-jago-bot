@@ -3,8 +3,8 @@ const client = new Discord.Client();
 require("dotenv").config();
 
 // Command Handler
-const _ = require("../handler/main");
-const avComm = require("../data/data.json");
+const commList = require("../data/fullCommandList");
+const avComm = require("../data/asyncCommands.json");
 
 client.on("ready", () => {
 	console.log(`Logged in as ${client.user.tag}`);
@@ -24,33 +24,16 @@ client.on("message", (msg) => {
 			msg.channel.send("sabar");
 		}
 
-		switch (comm) {
-			case "bantu":
-				_.handleBantu(msg);
-				break;
-			case "kbbi":
-				if (!params) return msg.reply("Kurang Parameter Bg");
-				_.handleUtilitas.kbbi(params, msg);
-				break;
-			case "infocovid":
-				_.handleUtilitas.infocovid(msg);
-				break;
-			case "pantun":
-				_.handleEntert.pantun(msg);
-				break;
-			case "faktaunik":
-				_.handleEntert.faktaunik(msg);
-				break;
-			case "meme":
-				_.handleEntert.meme(msg);
-				break;
-			case "wiki":
-				if (!params) return msg.reply("Kurang Parameter Bg");
-				_.handleUtilitas.wiki(params, msg);
-		}
-	}
-	if (!msg.author.bot) {
-		console.log(msg.author.id);
+		commList.find((command) => {
+			if (command.name == comm) {
+				if (command.params) {
+					if (!params) return msg.reply("Kurang Parameter bg");
+					return command.exec(params, msg);
+				}
+
+				command.exec(msg);
+			}
+		});
 	}
 });
 
