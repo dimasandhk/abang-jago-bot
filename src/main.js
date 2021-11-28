@@ -32,8 +32,8 @@ client.on("message", (msg) => {
 				if (!params) return msg.reply("Kurang Parameter Bg");
 				_.handleUtilitas.kbbi(params, msg);
 				break;
-			case "covidworld":
-				_.handleUtilitas.covidworld(msg);
+			case "infocovid":
+				_.handleUtilitas.infocovid(msg);
 				break;
 			case "pantun":
 				_.handleEntert.pantun(msg);
@@ -44,6 +44,9 @@ client.on("message", (msg) => {
 			case "meme":
 				_.handleEntert.meme(msg);
 				break;
+			case "wiki":
+				if (!params) return msg.reply("Kurang Parameter Bg");
+				_.handleUtilitas.wiki(params, msg);
 		}
 	}
 	if (!msg.author.bot) {

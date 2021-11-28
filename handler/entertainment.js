@@ -3,13 +3,13 @@ const axios = require("axios").default;
 const Canvas = require("canvas");
 
 const url = require("../utils/urlEntry");
-const embed = new MessageEmbed({
-	color: "#23e2cf"
-});
 
 const handleBasicEntert = async (type, qConfig, msg) => {
 	const res = await axios.get(url(type, qConfig.bool, qConfig.query));
 	const data = await res.data.result;
+	const embed = new MessageEmbed({
+		color: "#23e2cf"
+	});
 
 	msg.channel.bulkDelete(1);
 	msg.channel.send(embed.setDescription(data));
