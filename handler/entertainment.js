@@ -23,7 +23,7 @@ class handleEntert {
 		handleBasicEntert("faktaunik", { bool: false }, msg);
 	}
 	static async meme(msg) {
-		const canvas = Canvas.createCanvas(850, 800);
+		const canvas = Canvas.createCanvas(1000, 950);
 		const context = canvas.getContext("2d");
 
 		const background = await Canvas.loadImage(url("random/memeindo", false));

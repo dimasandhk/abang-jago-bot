@@ -1,6 +1,10 @@
 const axios = require("axios").default;
-const { MessageEmbed } = require("discord.js");
+const { MessageEmbed, MessageAttachment } = require("discord.js");
 const url = require("../utils/urlEntry");
+
+const countryid = require("../utils/countryId");
+
+const Canvas = require("canvas");
 
 const makeEmbed = (title) => {
 	return new MessageEmbed({
@@ -55,6 +59,32 @@ class handleUtilitas {
 
 		msg.channel.bulkDelete(1);
 		msg.channel.send(embed);
+	}
+	static async nulis(query, msg) {
+		const canvas = Canvas.createCanvas(910, 1280);
+		const context = canvas.getContext("2d");
+
+		console.log(url("image/nulis", true, query));
+		const background = await Canvas.loadImage(url("image/nulis", true, query, "text"));
+
+		// Masukkin gambar ke canvas
+		context.drawImage(background, 0, 0, canvas.width, canvas.height);
+
+		// Buffer to png
+		const attachment = new MessageAttachment(canvas.toBuffer(), "nulis.png");
+		msg.channel.bulkDelete(1);
+		msg.reply({ files: [attachment] });
+	}
+	static async translate(query, msg) {
+		const data = await getData(`translate/${query[0]}`, true, query[1]);
+
+		msg.channel.bulkDelete(1);
+		if (data.message) {
+			msg.reply("Id Negaranya ga ditemuin bg");
+			return msg.channel.send(countryid);
+		}
+
+		msg.channel.send(data);
 	}
 }
 

@@ -11,7 +11,7 @@ const listBantu = [
 	},
 	{
 		name: "Utilitas",
-		list: ["kbbi", "wiki", "translate", "infocovid"]
+		list: ["kbbi", "wiki", "translate", "infocovid", "nulis"]
 	}
 ];
 

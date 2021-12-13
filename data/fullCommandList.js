@@ -16,7 +16,6 @@ module.exports = [
 		async: true,
 		params: true,
 		exec(params, msg) {
-			if (!params) return msg.reply("Kurang Parameter bg");
 			_.handleUtilitas.kbbi(params, msg);
 		}
 	},
@@ -62,8 +61,23 @@ module.exports = [
 		async: true,
 		params: true,
 		exec(params, msg) {
-			if (!params) return msg.reply("Kurang Parameter bg");
 			_.handleUtilitas.wiki(params, msg);
 		}
+	},
+	{
+		name: "nulis",
+		type: "utility",
+		async: true,
+		params: true,
+		exec(params, msg) {
+			_.handleUtilitas.nulis(params, msg);
+		}
+	},
+	{
+		name: "translate",
+		type: "utility",
+		async: true,
+		params: true,
+		exec() {}
 	}
 ];

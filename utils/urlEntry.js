@@ -6,13 +6,13 @@ const randomIntFromInterval = (min, max) => {
 	return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
-const urlMaker = (type, usingQuery, q) => {
+const urlMaker = (type, usingQuery, q, name = "query") => {
 	// Get Random api key
 	const key = JSON.parse(process.env.ZENZARR);
 	const int = randomIntFromInterval(0, key.length - 1);
 
 	if (usingQuery) {
-		return `${ent}/${type}?apikey=${key[int]}&query=${q}`;
+		return `${ent}/${type}?apikey=${key[int]}&${name}=${q}`;
 	}
 
 	return `${ent}/${type}?apikey=${key[int]}`;

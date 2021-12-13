@@ -14,6 +14,7 @@ client.on("ready", () => {
 });
 
 client.on("message", (msg) => {
+	msg.content = msg.content.toLowerCase();
 	if (msg.content.includes("bg ")) {
 		const mainMsg = msg.content.split(" "); // Splitted msg content
 		const comm = mainMsg[1]; // Command bg ...
@@ -34,6 +35,7 @@ client.on("message", (msg) => {
 				command.exec(msg);
 			}
 		});
+		console.log(params.split(" ")[0], params.split(params.split(" ")[0])[1]);
 	}
 });
 
